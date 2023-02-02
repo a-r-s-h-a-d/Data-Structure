@@ -50,3 +50,10 @@ void main() {
 
   q.display();
 }
+
+
+/* 
+
+Output-->2  3  4
+
+*/
