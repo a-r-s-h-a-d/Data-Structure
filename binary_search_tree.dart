@@ -90,6 +90,25 @@ class BST {
       print(node.data);
     }
   }
+
+  //find closest data
+  int findClosest(int target) {
+    Node? current = root;
+    int closest = current!.data!;
+    while (current != null) {
+      if ((target - closest).abs() > (target - current.data!)) {
+        closest = current.data!;
+      }
+      if (target < current.data!) {
+        current = current.left;
+      } else if (target > current.data!) {
+        current = current.right;
+      } else {
+        break;
+      }
+    }
+    return closest;
+  }
 }
 
 void main(List<String> args) {
@@ -105,4 +124,6 @@ void main(List<String> args) {
   tree.inOrder();
   tree.preOrder();
   tree.postOrder();
+
+  print(tree.findClosest(12));
 }
