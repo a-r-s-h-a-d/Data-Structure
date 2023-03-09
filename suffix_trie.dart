@@ -21,26 +21,26 @@ class Trie {
   }
 
   void insert(int index, String word) {
-    TrieNode? node = root;
+    TrieNode node = root;
     for (int i = index; i < word.length; i++) {
       String char = word[i];
-      if (!node!.children.containsKey(char)) {
+      if (!node.children.containsKey(char)) {
         node.children[char] = TrieNode();
       }
-      node = node.children[char];
+      node = node.children[char]!;
     }
-    node!.isEnd = true;
+    node.isEnd = true;
   }
 
   bool search(String word) {
-    TrieNode? node = root;
+    TrieNode node = root;
     for (String char in word.split('')) {
-      if (!node!.children.containsKey(char)) {
+      if (!node.children.containsKey(char)) {
         return false;
       }
-      node = node.children[char];
+      node = node.children[char]!;
     }
-    return node!.isEnd;
+    return node.isEnd;
   }
 }
 
